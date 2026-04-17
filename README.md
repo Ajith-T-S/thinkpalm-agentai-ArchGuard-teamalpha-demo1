@@ -199,6 +199,20 @@ Optional token override:
 python main.py analyze microsoft/vscode --github-token <token>
 ```
 
+## Quality and reliability checks
+- Unit tests cover:
+  - repo input parsing
+  - dependency parsing
+  - memory store read/write/compare behavior
+- Integration smoke test validates the end-to-end pipeline using mocked GitHub API responses and mocked LLM output.
+- Make targets:
+  - `make test`
+  - `make lint`
+  - `make format`
+  - `make run-ui`
+  - `make run-cli`
+- CI workflow is available at `.github/workflows/ci.yml` and runs lint + tests on pushes and pull requests.
+
 ## Sample input and output
 
 ### Sample input
@@ -249,4 +263,3 @@ See [`docs/demo_script_outline.md`](docs/demo_script_outline.md). Quick suggeste
 - Add pluggable analyzers for security/performance metrics
 - Add async retrieval and caching
 - Add Claude provider integration path in `llm_service`
-- Add unit/integration tests and evaluation suite
